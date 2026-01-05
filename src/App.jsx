@@ -3,7 +3,7 @@ import HomePage from './pages/HomePage.jsx';
 import './App.css'
 import OrdersPage from './pages/OrdersPage';
 import TrackingPage from './pages/TrackingPage';
-import CheckOutPage from './pages/CheckOutPage';
+import CheckOutPage from './pages/checkout/CheckOutPage.jsx';
 
 function App() {
   
