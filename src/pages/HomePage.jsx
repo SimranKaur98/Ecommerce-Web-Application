@@ -1,17 +1,18 @@
 import React from "react";
-import axios from 'axios';
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import "./HomePage.css";
-import { products } from "../../starting-code/data/products";
+
 
 function HomePage() {
-  //Asynch code = code that does not finish right away
-  //fetch returns a promise
-  // which has a method then() which lets us wait for aysnch code to finish
-  axios.get("http://localhost:3000/api/products")
-    .then((response) => {
-      console.log('Products data:', response.data);
+
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/products").then((response) => {
+      setProducts(response.data);
     });
+  }, []);
 
   return (
     <>
@@ -40,7 +41,7 @@ function HomePage() {
                     }.png`}
                   />
                   <div className="product-rating-count link-primary">
-                    \{product.rating.count}
+                    {product.rating.count}
                   </div>
                 </div>
 
