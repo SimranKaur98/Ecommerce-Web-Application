@@ -4,29 +4,23 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import "./HomePage.css";
 
-
-function HomePage() {
-
+function HomePage({cart}) {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
+  
 
   useEffect(() => {
     axios.get("/api/products").then((response) => {
       setProducts(response.data);
     });
 
-    axios.get('/api/cart-items')
-    .then((response) => {
-      //cart items fetched
-      setCart(response.data);
-    });
+    
   }, []);
 
   return (
     <>
       <title>Ecommerce Website</title>
       <link rel="icon" type="image/svg+xml" href="/home-favicon.png" />
-      <Header cart={cart}/>
+      <Header cart={cart} />
       <div className="home-page">
         <div className="products-grid">
           {products.map((product) => {
