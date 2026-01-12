@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import Header from "../components/Header";
 import "./HomePage.css";
 import { products } from "../../starting-code/data/products";
@@ -7,12 +8,9 @@ function HomePage() {
   //Asynch code = code that does not finish right away
   //fetch returns a promise
   // which has a method then() which lets us wait for aysnch code to finish
-  fetch("http://localhost:3000/api/products")
+  axios.get("http://localhost:3000/api/products")
     .then((response) => {
-      return response.json(); //=json gives the data attached to the response, also async
-    })
-    .then((data) => { //=this .then waits for the above .then to finish and then runs.
-      console.log(data); 
+      console.log('Products data:', response.data);
     });
 
   return (
