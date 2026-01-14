@@ -5,7 +5,7 @@ import "./PageNotFound.css";
 const PageNotFound = () => {
   return (
     <>
-      <Header />
+      <Header cart={cart} />
       <div className="page-not-found">
         <h1>Page Not Found</h1>
         <p className="page-not-found-desc">
