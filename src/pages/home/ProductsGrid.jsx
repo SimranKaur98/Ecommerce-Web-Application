@@ -1,29 +1,9 @@
-import React from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Header from "../components/Header";
-import "./HomePage.css";
-import {formatMoney} from '../utils/money';
+import React from 'react'
+import {formatMoney} from '../../utils/money';
 
-function HomePage({cart}) {
-  const [products, setProducts] = useState([]);
-  
-
-  useEffect(() => {
-    axios.get("/api/products").then((response) => {
-      setProducts(response.data);
-    });
-
-    
-  }, []);
-
+const ProductsGrid = ({products}) => {
   return (
-    <>
-      <title>Ecommerce Website</title>
-      <link rel="icon" type="image/svg+xml" href="/home-favicon.png" />
-      <Header cart={cart} />
-      <div className="home-page">
-        <div className="products-grid">
+    <div className="products-grid">
           {products.map((product) => {
             //takes each value in an array and maps it to a new array
             return (
@@ -81,9 +61,7 @@ function HomePage({cart}) {
             );
           })}
         </div>
-      </div>
-    </>
-  );
+  )
 }
 
-export default HomePage;
+export default ProductsGrid

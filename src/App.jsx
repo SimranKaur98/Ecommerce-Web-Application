@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router";
-import HomePage from "./pages/HomePage.jsx";
+import HomePage from "./pages/home/HomePage.jsx";
 import "./App.css";
-import OrdersPage from "./pages/OrdersPage";
+import OrdersPage from "./pages/orders/OrdersPage";
 import TrackingPage from "./pages/TrackingPage";
 import CheckOutPage from "./pages/checkout/CheckOutPage.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
