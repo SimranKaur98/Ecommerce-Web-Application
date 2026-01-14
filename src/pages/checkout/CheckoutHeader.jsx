@@ -5,7 +5,14 @@ import {Link} from 'react-router';
 import Logo from '../../assets/images/logo.png'
 import MobileLogo from '../../assets/images/mobile-logo.png'
 
-const CheckoutHeader = () => {
+const CheckoutHeader = ({ cart }) => {
+  
+    let totalQuantity = 0;
+    cart.forEach((cartItem) => {
+      totalQuantity += cartItem.quantity;
+    });
+    console.log(totalQuantity);
+
   return (
     <>
       <div className="checkout-header">
@@ -20,7 +27,7 @@ const CheckoutHeader = () => {
           <div className="checkout-header-middle-section">
             Checkout (
             <Link className="return-to-home-link" to="/">
-              3 items
+              {totalQuantity} items
             </Link>
             )
           </div>
