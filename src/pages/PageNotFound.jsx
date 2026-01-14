@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import "./PageNotFound.css";
 
-const PageNotFound = () => {
+const PageNotFound = ({cart}) => {
   return (
     <>
       <Header cart={cart} />

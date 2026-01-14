@@ -3,7 +3,7 @@ import {NavLink} from 'react-router';
 import './Header.css';
 import LogoWhite from '../assets/images/logo-white.png';
 
-const Header = ({cart}) => {
+const Header = ({cart = []}) => {
   let totalQuantity = 0;
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
