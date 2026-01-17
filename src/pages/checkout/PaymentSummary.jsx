@@ -1,7 +1,18 @@
 import React from 'react'
 import { formatMoney } from "../../utils/money";
+import axios from "axios";
+import { useNavigate } from 'react-router';
 
-const PaymentSummary = ({ paymentSummary }) => {
+
+const PaymentSummary = ({ paymentSummary, loadCart }) => {
+  const navigate = useNavigate();
+
+  const createOrder = async () => {
+    await axios.post('/api/orders');
+    await loadCart();
+     //cart is already saved in the backend so it can take info from there and create a order
+     navigate('/orders');
+  };
   return (
     <div className="payment-summary">
             <div className="payment-summary-title">Payment Summary</div>
@@ -43,7 +54,8 @@ const PaymentSummary = ({ paymentSummary }) => {
                   </div>
                 </div>
 
-                <button className="place-order-button button-primary">
+                <button className="place-order-button button-primary"
+                onClick={createOrder}>
                   Place your order
                 </button>
               </>
