@@ -1,8 +1,10 @@
 import React from 'react'
 import { formatMoney } from "../../utils/money";
 import dayjs from "dayjs";
+import axios from 'axios';
+const DeliveryOptions = ({ deliveryOptions, cartItem, loadCart }) => {
 
-const DeliveryOptions = ({ deliveryOptions, cartItem }) => {
+
   return (
     <div className="delivery-options">
                   <div className="delivery-options-title">
@@ -15,13 +17,26 @@ const DeliveryOptions = ({ deliveryOptions, cartItem }) => {
                         deliveryOption.priceCents
                       )} - Shipping`;
                     }
+                    const updateDeliveryOption = async () => {
+                      await axios.put(`/api/cart-items/${cartItem.productId}`,{
+                        deliveryOptionId: deliveryOption.id
+                      })
+                      await loadCart();
+                      };
                     return (
-                      <div key={deliveryOption.id} className="delivery-option">
+                      <div 
+                      key={deliveryOption.id} 
+                      className="delivery-option"
+                      onClick={() => {
+                        // Handle delivery option selection
+                        updateDeliveryOption();
+                      }}>
                         <input
                           type="radio"
                           checked={
                             deliveryOption.id === cartItem.deliveryOptionId
                           }
+                          onChange={()=>{}}
                           className="delivery-option-input"
                           name={`delivery-option-${cartItem.productId}`}
                         />

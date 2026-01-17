@@ -2,7 +2,7 @@ import React from "react";
 import { formatMoney } from "../../utils/money";
 import DeliveryOptions from "./DeliveryOptions";
 
-const CardItemDetails = ({ cartItem, deliveryOptions }) => {
+const CardItemDetails = ({ cartItem, deliveryOptions, loadCart }) => {
   return (
     <>
       <div className="cart-item-details-grid">
@@ -26,6 +26,7 @@ const CardItemDetails = ({ cartItem, deliveryOptions }) => {
         <DeliveryOptions
           deliveryOptions={deliveryOptions}
           cartItem={cartItem}
+          loadCart={loadCart}
         />
       </div>
     </>
