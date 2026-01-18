@@ -13,7 +13,7 @@ const OrderDetailsGrid = ({ order, loadCart }) => {
           // Implement add to cart functionality
           await axios.post("/api/cart-items", {
             productId: orderProduct.productId,
-            quantity: orderProduct.quantity
+            quantity: 1
           });
           await loadCart();
         }
