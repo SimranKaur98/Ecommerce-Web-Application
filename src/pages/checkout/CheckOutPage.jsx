@@ -6,6 +6,7 @@ import CheckoutHeader from "./CheckoutHeader";
 import OrderSummary from "./OrderSummary";
 import PaymentSummary from "./PaymentSummary";
 
+
 const CheckOutPage = ({ cart, loadCart }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
@@ -25,6 +26,8 @@ const CheckOutPage = ({ cart, loadCart }) => {
     };
     fetchCheckoutData();
   }, [cart]);
+
+  window.axios = axios;
 
   return (
     <>

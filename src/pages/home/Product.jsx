@@ -10,9 +10,15 @@ const Product = ({ product, loadCart }) => {
       productId: product.id,
       quantity,
     });
+    setIsAdded(true);
+    setTimeout(() => {setIsAdded(false);}, 2000);
     await loadCart();
   };
+  
   const selectQuantity = (e) => {setQuantity(Number(e.target.value))};
+
+  const [isAdded, setIsAdded] = useState(false);
+
   return (
     <div className="product-container">
       <div className="product-image-container">
@@ -53,7 +59,8 @@ const Product = ({ product, loadCart }) => {
 
       <div className="product-spacer"></div>
 
-      <div className="added-to-cart">
+      <div className="added-to-cart"
+        style={{ opacity: isAdded ? 1 : 0 }}>
         <img src="images/icons/checkmark.png" />
         Added
       </div>
