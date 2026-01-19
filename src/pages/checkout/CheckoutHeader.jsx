@@ -11,7 +11,7 @@ const CheckoutHeader = ({ cart }) => {
     cart.forEach((cartItem) => {
       totalQuantity += cartItem.quantity;
     });
-    console.log(totalQuantity);
+    
 
   return (
     <>
