@@ -7,6 +7,5 @@ describe('formatMoney', () => {
     it('displays 2 decimals',() => {
         expect(formatMoney(2000)).toBe('$20.00');
         expect(formatMoney(2050)).toBe('$20.50');
-
     });
 }); 
