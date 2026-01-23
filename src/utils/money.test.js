@@ -8,4 +8,11 @@ describe('formatMoney', () => {
         expect(formatMoney(2000)).toBe('$20.00');
         expect(formatMoney(2050)).toBe('$20.50');
     });
+    it('handles zero cents',() => {
+        expect(formatMoney(0)).toBe('$0.00');
+    })
+    it('-ve values are formatted correctly', () => {
+        expect(formatMoney(-999)).toBe('$-9.99');
+        expect(formatMoney(-100)).toBe('$-1.00');
+    })
 }); 
