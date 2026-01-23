@@ -14,11 +14,7 @@ describe("Product Component", () => {
   let product;
   let loadCart;
 
-  //it = creates a test case, expect = assertion to check if the code works as expected
-  it("renders product details correctly", async () => {
-    //to mock a function
-    loadCart = vi.fn();
-    //beforeEach to remove redundancy
+  //beforeEach to remove redundancy
     beforeEach(() => {
       product = {
         id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -31,8 +27,15 @@ describe("Product Component", () => {
         priceCents: 1090,
         keywords: ["socks", "sports", "apparel"],
       };      
+      axios.post.mockResolvedValue({ data: {} });
     });
 
+
+  //it = creates a test case, expect = assertion to check if the code works as expected
+  it("renders product details correctly", async () => {
+    //to mock a function
+    loadCart = vi.fn();
+    
     //renders a component in a fake webpage
     render(<Product product={product} loadCart={loadCart} />);
 
@@ -40,11 +43,14 @@ describe("Product Component", () => {
     expect(
       screen.getByText("Black and Gray Athletic Cotton Socks - 6 Pairs"),
     ).toBeInTheDocument();
+
     expect(screen.getByTestId("product-image")).toHaveAttribute(
       "src",
       "images/products/athletic-cotton-socks-6-pairs.jpg",
     );
+
     expect(screen.getByText("$10.90")).toBeInTheDocument();
+
     expect(screen.getByTestId("product-rating-stars")).toHaveAttribute(
       "src",
       "images/ratings/rating-45.png",
@@ -55,6 +61,7 @@ describe("Product Component", () => {
     const user = userEvent.setup();
     const addToCartButton = screen.getByTestId("add-to-cart-button");
     await user.click(addToCartButton);
+    
     expect(axios.post).toHaveBeenCalledWith("/api/cart-items", {
       productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
       quantity: 1,
