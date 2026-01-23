@@ -13,6 +13,7 @@ describe("Product Component", () => {
 
   let product;
   let loadCart;
+  let user;
 
   //beforeEach to remove redundancy
     beforeEach(() => {
@@ -28,6 +29,7 @@ describe("Product Component", () => {
         keywords: ["socks", "sports", "apparel"],
       };      
       axios.post.mockResolvedValue({ data: {} });
+      user = userEvent.setup();
     });
 
 
@@ -57,8 +59,9 @@ describe("Product Component", () => {
     );
     expect(screen.getByText("87")).toBeInTheDocument();
 
+  
+
     //Test = simulate user interaction
-    const user = userEvent.setup();
     const addToCartButton = screen.getByTestId("add-to-cart-button");
     await user.click(addToCartButton);
     
@@ -68,4 +71,23 @@ describe("Product Component", () => {
     });
     expect(loadCart).toHaveBeenCalled();
   });
+
+  it('select a qualtity',async () =>{
+    render(<Product product={product} loadCart={loadCart} />);
+    const quantitySelector = screen.getByTestId("product-quantity-select");
+    expect(quantitySelector).toHaveValue('1');
+
+    //simulate user interaction    
+    await user.selectOptions(quantitySelector,'3');
+    expect(quantitySelector).toHaveValue('3');
+
+    //simulate adding to cart with selected quantity
+    const addToCartButton = screen.getByTestId("add-to-cart-button");
+    await user.click(addToCartButton);
+    expect(axios.post).toHaveBeenCalledWith("/api/cart-items", {
+      productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+      quantity: 3,
+    });
+    expect(loadCart).toHaveBeenCalled();
+  })
 });
