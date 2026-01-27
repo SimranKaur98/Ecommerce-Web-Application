@@ -13,6 +13,9 @@
     left: 0;
     right: 0;
     height: 60px;
+
+    z-index: 1;
+
   }
   
   .header .left-section {
@@ -35,12 +38,13 @@
   }
   
   .header .header-link:hover {
-    border: 1px solid white;
+    border: 1px solid rgb(4, 69, 52);
+    scale: 1.03;
   }
   
   .header .logo {
-    height: 26px;
-    margin-top: 1px;
+    height: 40px;
+    margin-top: 1px;   
    
   }
   

@@ -85,6 +85,7 @@
 
   height: 180px;
   margin-bottom: 20px;
+  overflow:hidden;
 }
 
 .home-page .product-image {
@@ -93,6 +94,11 @@
   max-width: 100%;
   max-height: 100%;
   border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.home-page .product-image:hover {
+  transform: scale(1.05);
 }
 
 .home-page .product-name {
