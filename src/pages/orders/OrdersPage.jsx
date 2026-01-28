@@ -21,7 +21,6 @@ const OrdersPage = ({ cart, loadCart }) => {
       <title>Orders</title>
       <link rel="icon" type="image/svg+xml" to="/orders-favicon.png" />
       <Header cart={cart} />
-
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
 

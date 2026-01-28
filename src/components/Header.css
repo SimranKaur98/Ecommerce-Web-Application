@@ -19,7 +19,8 @@
   }
   
   .header .left-section {
-    width: 208px;
+    max-width: 208px;
+    width: auto;
   }
   
   @media (max-width: 800px) {
@@ -41,9 +42,10 @@
     border: 1px solid rgb(4, 69, 52);
     scale: 1.03;
   }
-  
-  .header .logo {
-    height: 40px;
+  .header img{
+    height: 36px;
+  }
+  .header .header-link .logo {    
     margin-top: 1px;   
    
   }
@@ -52,7 +54,7 @@
     display: none;
   }
   
-  @media (max-width: 675px) {
+  /* @media (max-width: 675px) {
     .header .logo {
       display: none;
     }
@@ -62,7 +64,7 @@
       height: 26px;
       margin-top: 1px;
     }
-  }
+  } */
   
   .header .middle-section {
     flex: 1;
@@ -155,4 +157,75 @@
 
   .header .orders-link.active{
     text-decoration: underline;
+  }
+
+  @media (max-width: 675px) {
+    .header {
+      display:flex;
+      flex-wrap: wrap;
+      height: auto;
+      padding: 8px 10px;
+    }
+      
+    .header .left-section,
+    .header .right-section {
+      width: auto;
+    }
+    .header .left-section .header-link .mobile-logo {
+      display: block;
+      margin-right:40px;
+      height: 26px;
+      
+    }
+    .header .left-section .header-link .logo {
+      display: none;
+        
+    }        
+  
+    .header .middle-section {
+      padding-bottom:6px;
+      width: 100%;
+      margin: 8px 0 0;
+      display:flex;
+      
+    }
+  
+    .header .search-bar {
+      height: 34px;
+      font-size: 14px;
+      flex: 1;
+      min-width:50px;
+      
+    }
+  
+    .header .search-button {
+      height: 36px;
+      width: 40px;
+      
+    }
+
+    
+  
+    /* Hide text labels on mobile */
+    .orders-text,
+    .cart-text {
+      display: none;
+    }
+  
+    .header .cart-quantity {
+      top: 8.5px;
+      right: 13px;
+      font-size: 12px;
+    }
+  }
+  
+  @media(max-width:375px){
+    .header .middle-section {
+      order:3;
+      padding-bottom:6px;
+      width: 100%;
+      margin: 8px 0 0;
+      display:flex;
+      
+    }
   }

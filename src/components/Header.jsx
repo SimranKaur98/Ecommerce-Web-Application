@@ -5,7 +5,7 @@ import LogoWhite from "../assets/images/logo-white.png";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useSearchParams } from "react-router";
-
+import MobileLogoWhite from "../assets/images/mobile-logo-white.png";
 const Header = ({ cart = [] }) => {
   //search state and handlers
   const [searchParams] = useSearchParams();
@@ -33,7 +33,7 @@ const Header = ({ cart = [] }) => {
         <div className="left-section">
           <NavLink to="/" className="header-link">
             <img className="logo" src={LogoWhite} />
-            <img className="mobile-logo" src={LogoWhite} />
+            <img className="mobile-logo" src={MobileLogoWhite} />
           </NavLink>
         </div>
 
