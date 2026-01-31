@@ -6,18 +6,25 @@ import TrackingPage from "./pages/TrackingPage";
 import CheckOutPage from "./pages/checkout/CheckOutPage.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "./api/client";
 
 function App() {
   const [cart, setCart] = useState([]);
 
   const loadCart = async () => {
-    const response = await axios.get("/api/cart-items?expand=product");
+    let response = await api.get("/api/cart-items?expand=product");
     setCart(response.data);
+    response = await api.get("/api/products");
+console.log(response.data);
+
   }; 
   useEffect(() => {    
-    loadCart();    
+    (async () => {
+      await loadCart();
+    })();   
   }, []);
+  console.log(cart);
+  
 
   return (
     <Routes>

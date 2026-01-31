@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import './TrackingPage.css'
 import { Link } from 'react-router'
 import {useParams} from 'react-router';
-import axios from 'axios';
+import api from "../api/client";
 import dayjs from 'dayjs';
 
 const TrackingPage = ({cart}) => {
@@ -13,7 +13,7 @@ const TrackingPage = ({cart}) => {
     // You can use orderId and productId to fetch tracking details if needed
     const fetchTrackingDetails = async () => {
       // Fetch tracking details logic here
-      const response = await axios.get(`/api/orders/${orderId}?expand=products`);
+      const response = await api.get(`/api/orders/${orderId}?expand=products`);
       setOrder(response.data);
 
     } ;

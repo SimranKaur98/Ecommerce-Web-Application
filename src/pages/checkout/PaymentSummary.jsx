@@ -1,6 +1,6 @@
 import React from 'react'
 import { formatMoney } from "../../utils/money";
-import axios from "axios";
+import api from "../../api/client";
 import { useNavigate } from 'react-router';
 
 
@@ -8,7 +8,7 @@ const PaymentSummary = ({ paymentSummary, loadCart }) => {
   const navigate = useNavigate();
 
   const createOrder = async () => {
-    await axios.post('/api/orders');
+    await api.post('/api/orders');
     await loadCart();
      //cart is already saved in the backend so it can take info from there and create a order
      navigate('/orders');

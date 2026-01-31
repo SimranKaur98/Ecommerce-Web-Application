@@ -2,7 +2,7 @@ import React from "react";
 import { Fragment } from "react";
 import { Link } from "react-router";
 import dayjs from "dayjs";
-import axios from "axios";
+import api from "../../api/client";
 
 const OrderDetailsGrid = ({ order, loadCart }) => {
   
@@ -11,7 +11,7 @@ const OrderDetailsGrid = ({ order, loadCart }) => {
       {order.products.map((orderProduct) => {
         const addToCart = async() => {
           // Implement add to cart functionality
-          await axios.post("/api/cart-items", {
+          await api.post("/api/cart-items", {
             productId: orderProduct.productId,
             quantity: 1
           });
